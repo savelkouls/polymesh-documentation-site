@@ -40,19 +40,20 @@ sudo docker pull polymeshassociation/polymesh:6.0.0-testnet-distroless
 ```
 
 The tag `:6.0.0-testnet-distroless` should be replaced with the desired release tag.
+Or you can use :latest-testnet-distroless
 
-The Polymesh Association does not publish a `:latest` build. If a release tag is omitted the docker pull command will error.
+The Polymesh Association does not publish a `:latest` build because there are 'develop' and 'testnet' builds. If a release tag is omitted the docker pull command will error.
 
 By default, if the Polymesh container image has not previously been pulled from the repository, it will be pulled when first attempting to run it. You can verify the version installed by running the following command:
 
 ```bash
-sudo docker run --rm polymeshassociation/polymesh:6.0.0-testnet-distroless --version
+sudo docker run --rm polymeshassociation/polymesh:latest-testnet-distroless --version
 ```
 
 **All available Polymesh [FLAGS], [OPTIONS] and <COMMAND\> commands can be viewed by calling:**
 
 ```bash
-sudo docker run --rm polymeshassociation/polymesh:6.0.0-testnet-distroless --help
+sudo docker run --rm polymeshassociation/polymesh:latest-testnet-distroless --help
 ```
 
 ## Running a node
@@ -60,7 +61,7 @@ sudo docker run --rm polymeshassociation/polymesh:6.0.0-testnet-distroless --hel
 With the image downloaded you can now run your first testnet node:
 
 ```bash
-sudo docker run -u root --rm -it polymeshassociation/polymesh:6.0.0-testnet-distroless --chain testnet
+sudo docker run -u root --rm -it polymeshassociation/polymesh:latest-testnet-distroless --chain testnet
 ```
 
 Note: the above command is required to be run as the root user with the flag `-u` or `--user root` in order for the user to have suitable permissions to successfully run the node.
@@ -92,7 +93,7 @@ sudo docker run \
 -u root \
 --rm -it \
 --volume=/var/lib/polymesh/:/var/lib/polymesh/ \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --base-path /var/lib/polymesh/
 ```
@@ -124,7 +125,7 @@ sudo docker run \
 --user $(id -u polymesh):$(id -g polymesh) \
 --rm -it \
 --volume=/var/lib/polymesh/:/var/lib/polymesh/ \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --base-path /var/lib/polymesh/
 ```
@@ -139,7 +140,7 @@ sudo docker run \
 --user $(id -u polymesh):$(id -g polymesh) \
 --rm -it \
 --volume=/var/lib/polymesh/:/var/lib/polymesh/ \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --name my-node-name \
 --base-path /var/lib/polymesh/
@@ -166,7 +167,7 @@ sudo docker run \
 --restart always \
 -it \
 --volume=/var/lib/polymesh/:/var/lib/polymesh/ \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --name my-node-name \
 --base-path /var/lib/polymesh/
@@ -238,7 +239,7 @@ sudo docker run \
 -p 9933:9933 \
 -p 9944:9944 \
 -p 9615:9615 \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --name my-node-name \
 --base-path /var/lib/polymesh/ \
@@ -264,7 +265,7 @@ sudo docker run \
 -it \
 --volume=/var/lib/polymesh/:/var/lib/polymesh/ \
 --network=host \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --name my-node-name \
 --base-path /var/lib/polymesh/
@@ -295,7 +296,7 @@ sudo docker run \
 -u $(id -u polymesh):$(id -g polymesh) \
 --rm -it \
 -v /var/lib/polymesh/:/var/lib/polymesh/ \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 purge-chain \
 --chain testnet  \
 --base-path /var/lib/polymesh/
@@ -332,7 +333,7 @@ sudo docker run \
 -p 30333:30333 \
 -p 9615:9615 \
 --ulimit nofile=1024:10240 \
-polymeshassociation/polymesh:6.0.0-testnet-distroless \
+polymeshassociation/polymesh:latest-testnet-distroless \
 --chain testnet \
 --operator \
 --name my-node-name \
